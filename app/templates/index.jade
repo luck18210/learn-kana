@@ -1,0 +1,186 @@
+- var title = "Futsū Kana"
+include _head.jade
+
+-
+    function kana(nam, romaji) {
+        return {
+            kana: nam ? nam : '　',
+            romaji: romaji ? romaji : '　',
+        };
+    }
+
+    var hiragana = {
+        a: [kana('あ', 'a'), kana('い', 'i'), kana('う', 'u'), kana('え', 'e'), kana('お', 'o')],
+        ka: [kana('か', 'ka'), kana('き', 'ki'), kana('く', 'ku'), kana('け', 'ke'), kana('こ', 'ko')],
+        sa: [kana('さ', 'sa'), kana('し', 'shi'), kana('す', 'su'), kana('せ', 'se'), kana('そ', 'so')],
+        ta: [kana('た', 'ta'), kana('ち', 'chi'), kana('つ', 'tsu'), kana('て', 'te'), kana('と', 'to')],
+        na: [kana('な', 'na'), kana('に', 'ni'), kana('ぬ', 'nu'), kana('ね', 'ne'), kana('の', 'no')],
+        ha: [kana('は', 'ha'), kana('ひ', 'hi'), kana('ふ', 'fu'), kana('へ', 'he'), kana('ほ', 'ho')],
+        ma: [kana('ま', 'ma'), kana('み', 'mi'), kana('む', 'mu'), kana('め', 'me'), kana('も', 'mo')],
+        ya: [kana('や', 'ya'), kana(), kana('ゆ', 'yu'), kana(), kana('よ', 'yo')],
+        ra: [kana('ら', 'ra'), kana('り', 'ri'), kana('る', 'ru'), kana('れ', 're'), kana('ろ', 'ro')],
+        wa: [kana('わ', 'wa'), kana(), kana(), kana(), kana('を', 'wo')],
+        n: [kana(), kana(), kana(), kana(), kana('ん', 'n')],
+
+        ga: [kana('が', 'ga'), kana('ぎ', 'gi'), kana('ぐ', 'gu'), kana('げ', 'ge'), kana('ご', 'go')],
+        za: [kana('ざ', 'za'), kana('じ', 'ji'), kana('ず', 'zu'), kana('ぜ', 'ze'), kana('ぞ', 'zo')],
+        da: [kana('だ', 'da'), kana('ぢ', 'di'), kana('づ', 'du'), kana('で', 'de'), kana('ど', 'do')],
+        ba: [kana('ば', 'ba'), kana('び', 'bi'), kana('ぶ', 'bu'), kana('べ', 'be'), kana('ぼ', 'bo')],
+        pa: [kana('ぱ', 'pa'), kana('ぴ', 'pi'), kana('ぷ', 'pu'), kana('ぺ', 'pe'), kana('ぽ', 'po')]
+    };
+
+    var hiragana_double = {
+        kya: [kana('きゃ', 'kya'), kana('きゅ', 'kyu'), kana('きょ', 'kyo'), kana(), kana()],
+        sha: [kana('しゃ', 'sha'), kana('しゅ', 'shu'), kana('しょ', 'sho'), kana(), kana()],
+        cha: [kana('ちゃ', 'cha'), kana('ちゅ', 'chu'), kana('ちょ', 'cho'), kana(), kana()],
+        nya: [kana('にゃ', 'nya'), kana('にゅ', 'nyu'), kana('にょ', 'nyo'), kana(), kana()],
+        hya: [kana('ひゃ', 'hya'), kana('ひゅ', 'hyu'), kana('ひょ', 'hyo'), kana(), kana()],
+        mya: [kana('みゃ', 'mya'), kana('みゅ', 'myu'), kana('みょ', 'myo'), kana(), kana()],
+        rya: [kana('りゃ', 'rya'), kana('りゅ', 'ryu'), kana('りょ', 'ryo'), kana(), kana()],
+        gya: [kana('ぎゃ', 'gya'), kana('ぎゅ', 'gyu'), kana('ぎょ', 'gyo'), kana(), kana()],
+        zya: [kana('じゃ', 'ja'), kana('じゅ', 'ju'), kana('じょ', 'jo'), kana(), kana()],
+        dya: [kana('ぢゃ', 'dya'), kana('ぢゅ', 'dyu'), kana('ぢょ', 'dyo'), kana(), kana()],
+        bya: [kana('びゃ', 'bya'), kana('びゅ', 'byu'), kana('びょ', 'byo'), kana(), kana()],
+        pya: [kana('ぴゃ', 'pya'), kana('ぴゅ', 'pyu'), kana('ぴょ', 'pyo'), kana(), kana()],
+    };
+
+    var katakana = {
+        a: [kana('ア', 'a'), kana('イ', 'i'), kana('ウ', 'u'), kana('エ', 'e'), kana('オ', 'o')],
+        ka: [kana('カ', 'ka'), kana('キ', 'ki'), kana('ク', 'ku'), kana('ケ', 'ke'), kana('コ', 'ko')],
+        sa: [kana('サ', 'sa'), kana('シ', 'shi'), kana('ス', 'su'), kana('セ', 'se'), kana('ソ', 'so')],
+        ta: [kana('タ', 'ta'), kana('チ', 'chi'), kana('ツ', 'tsu'), kana('テ', 'te'), kana('ト', 'to')],
+        na: [kana('ナ', 'na'), kana('ニ', 'ni'), kana('ヌ', 'nu'), kana('ネ', 'ne'), kana('ノ', 'no')],
+        ha: [kana('ハ', 'ha'), kana('ヒ', 'hi'), kana('フ', 'fu'), kana('ヘ', 'he'), kana('ホ', 'ho')],
+        ma: [kana('マ', 'ma'), kana('ミ', 'mi'), kana('ム', 'mu'), kana('メ', 'me'), kana('モ', 'mo')],
+        ya: [kana('ヤ', 'ya'), kana(), kana('ユ', 'yu'), kana(), kana('ヨ', 'yo')],
+        ra: [kana('ラ', 'ra'), kana('リ', 'ri'), kana('ル', 'ru'), kana('レ', 're'), kana('ロ', 'ro')],
+        wa: [kana('ワ', 'wa'), kana(), kana(), kana(), kana('ヲ', 'wo')],
+        n: [kana(), kana(), kana(), kana(), kana('ン', 'n')],
+
+        ga: [kana('ガ', 'ga'), kana('ギ', 'gi'), kana('グ', 'gu'), kana('ゲ', 'ge'), kana('ゴ', 'go')],
+        za: [kana('ザ', 'za'), kana('ジ', 'ji'), kana('ズ', 'zu'), kana('ゼ', 'ze'), kana('ゾ', 'zo')],
+        da: [kana('ダ', 'da'), kana('ヂ', 'di'), kana('ヅ', 'du'), kana('デ', 'de'), kana('ド', 'do')],
+        ba: [kana('バ', 'ba'), kana('ビ', 'bi'), kana('ブ', 'bu'), kana('ベ', 'be'), kana('ボ', 'bo')],
+        pa: [kana('パ', 'pa'), kana('ピ', 'pi'), kana('プ', 'pu'), kana('ペ', 'pe'), kana('ポ', 'po')]
+    };
+
+    var katakana_double = {
+        kya: [kana('キャ', 'kya'), kana('キュ', 'kyu'), kana('キョ', 'kyo'), kana(), kana()],
+        sha: [kana('シャ', 'sha'), kana('シュ', 'shu'), kana('ショ', 'sho'), kana(), kana()],
+        cha: [kana('チャ', 'cha'), kana('チュ', 'chu'), kana('チョ', 'cho'), kana(), kana()],
+        nya: [kana('ニャ', 'nya'), kana('ニュ', 'nyu'), kana('ニョ', 'nyo'), kana(), kana()],
+        hya: [kana('ヒャ', 'hya'), kana('ヒュ', 'hyu'), kana('ヒョ', 'hyo'), kana(), kana()],
+        mya: [kana('ミャ', 'mya'), kana('ミュ', 'myu'), kana('ミョ', 'myo'), kana(), kana()],
+        rya: [kana('リャ', 'rya'), kana('リュ', 'ryu'), kana('リョ', 'ryo'), kana(), kana()],
+        gya: [kana('ギャ', 'gya'), kana('ギュ', 'gyu'), kana('ギョ', 'gyo'), kana(), kana()],
+        zya: [kana('ジャ', 'ja'), kana('ジュ', 'ju'), kana('ジョ', 'jo'), kana(), kana()],
+        dya: [kana('ヂャ', 'dya'), kana('ヂュ', 'dyu'), kana('ヂョ', 'dyo'), kana(), kana()],
+        bya: [kana('ビャ', 'bya'), kana('ビュ', 'byu'), kana('ビョ', 'byo'), kana(), kana()],
+        pya: [kana('ピャ', 'pya'), kana('ピュ', 'pyu'), kana('ピョ', 'pyo'), kana(), kana()],
+    };
+
+    var katakana_extra = {
+        wi: [kana(), kana('ウィ', 'wi'), kana(), kana('ウェ', 'we'), kana('ウォ', 'wo')],
+        va: [kana('ヴァ', 'va'), kana('ヴィ', 'vi'), kana('ヴ', 'vu'), kana('ヴェ', 've'), kana('ヴォ', 'vo')],
+        she: [kana(), kana(), kana(), kana('シェ', 'she'), kana()],
+        je: [kana(), kana(), kana(), kana('ジェ', 'je'), kana()],
+        che: [kana(), kana(), kana(), kana('チェ', 'che'), kana()],
+        to: [kana(), kana('ティ', 'ti'), kana('トゥ', 'tu'), kana(), kana()],
+        du: [kana(), kana('ディ', 'di'), kana('ドゥ', 'du'), kana(), kana()],
+        tsa: [kana('ツァ', 'tsa'), kana('ツィ', 'tsi'), kana('', ''), kana('ツェ', 'tse'), kana('ツォ', 'tso')],
+        fa: [kana('ファ', 'fa'), kana('フィ', 'fi'), kana('', ''), kana('フェ', 'fe'), kana('フォ', 'fo')],
+    };
+
+mixin nav_a(name)
+    a(href="#" + name)=name
+
+mixin link(name, href)
+    a(href=href)=name
+
+mixin checkbox(name)
+    div
+        input(type="checkbox" name=name)
+
+body
+    nav
+        a(href="#")="Main"
+        +nav_a("Hiragana")
+        +nav_a("Katakana")
+        +nav_a("Start")
+
+    section(class="sub_page" id="Hiragana")
+        p(class="desc").
+            Choose #[+link("Hiragana", "https://en.wikipedia.org/wiki/Hiragana")] to learn. Then, you can start.
+        section(class="select")
+            a()="«"
+            section(class="current")
+                section(class="table")
+                    each kanas, col in hiragana
+                        div(class="column")
+                            +checkbox(col)
+                            each kana in kanas
+                                div(title=kana.romaji)=kana.kana
+
+                section(class="table")
+                    each kanas, col in hiragana_double
+                        div(class="column")
+                            +checkbox(col)
+                            each kana in kanas
+                                div(title=kana.romaji)=kana.kana
+            a()="»"
+        section(class="select_ui")
+            a="Select all"
+            a="Reset all"
+
+    section(class="sub_page" id="Katakana")
+        p(class="desc").
+            Choose #[+link("Katakana", "https://en.wikipedia.org/wiki/Katakana")] to learn. Then, you can start.
+        section(class="select")
+            a(class="left")="«"
+            section(class="current")
+                section(class="table")
+                    each kanas, col in katakana
+                        div(class="column")
+                            +checkbox(col)
+                            each kana in kanas
+                                div(title=kana.romaji)=kana.kana
+
+                section(class="table")
+                    each kanas, col in katakana_double
+                        div(class="column")
+                            +checkbox(col)
+                            each kana in kanas
+                                div(title=kana.romaji)=kana.kana
+                section(class="table")
+                    each kanas, col in katakana_extra
+                        div(class="column")
+                            +checkbox(col)
+                            each kana in kanas
+                                div(title=kana.romaji)=kana.kana
+            a(class="right")="»"
+        section(class="select_ui")
+            a="Select all"
+            a="Reset all"
+
+    section(class="sub_page" id="Start")
+        p(class="desc").
+            Type character's romaji equivalent.
+        p(class="desc").
+            If you have trouble then move your cursor over it for answer.
+        section(class="query")
+            p(class="question")='　'
+            p(style="visibility: hidden" class="answer")='　'
+            input(disabled autofocus autocomplete="off" placeholder="Enter romaji")
+
+    section(class="default sub_page" id=title)
+        h3="Learn Kana"
+        p(class="desc").
+            To start go to either #[+nav_a('Hiragana')] or #[+nav_a('Katakana')].
+            Choose which characters you need to learn.
+        p(class="desc").
+            Then, go to #[+nav_a('Start')] and type them in romaji.
+
+    noscript
+        section
+            p="Javascript is disabled :("
+            p="Please enable it for site to work."
